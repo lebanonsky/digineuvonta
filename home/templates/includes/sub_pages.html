@@ -1,0 +1,14 @@
+ {% load navigation_tags wagtailcore_tags wagtailimages_tags %}
+
+{% for sub in sub_pages %}
+<div class="col-xs-6 col-lg-4" style="padding-bottom:15px">
+	{% image sub.image width-200 as img %}	
+    <img src="{{ img.url }}" width="{{ img.width }}"
+        height="{{ img.height }}" alt="{{ img.alt }}" class="" />
+
+	<h3>{{ sub.title }}</h3>
+	{{ sub.intro|richtext }}
+	<a class="btn btn-default" role="button" href="{% pageurl sub %}">Lisää</a>
+	
+</div>
+{% endfor %}

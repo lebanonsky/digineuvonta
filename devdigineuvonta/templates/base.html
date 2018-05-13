@@ -1,0 +1,337 @@
+{% load static wagtailuserbar wagtailcore_tags %}
+{% load navigation_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+        <meta name="generator" content="Bootply" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/devdigineuvonta.css' %}">
+      <link rel="icon" href="{% static 'img/favicon.ico' %} " type="image/x-icon" />
+
+          <style>
+
+@import url("https://dev.hel.fi/~terotik/cdn/fonts/HelsinkiGrotesk.css");
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif");
+@font-face {
+  font-family: 'HelsinkiGrotesk';
+  src: url("https://makasiini.hel.ninja/delivery/HelsinkiGrotesk/565d73a693abe0776c801607ac28f0bf.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeLegibility; }
+
+@font-face {
+  font-family: 'HelsinkiGrotesk';
+  src: url("https://makasiini.hel.ninja/delivery/HelsinkiGrotesk/5bb29e3b7b1d3ef30121229bbe67c3e1.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  text-rendering: optimizeLegibility; }
+
+@font-face {
+  font-family: 'HelsinkiGrotesk';
+  src: url("https://makasiini.hel.ninja/delivery/HelsinkiGrotesk/7c46f288e8133b87e6b12b45dac71865.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  text-rendering: optimizeLegibility; }
+
+@font-face {
+  font-family: 'HelsinkiGrotesk';
+  src: url("https://makasiini.hel.ninja/delivery/HelsinkiGrotesk/e62dc97e83a385e4d8cdc939cf1e4213.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  text-rendering: optimizeLegibility; }
+
+@font-face {
+  font-family: 'HelsinkiGrotesk';
+  src: url("https://makasiini.hel.ninja/delivery/HelsinkiGrotesk/533af26cf28d7660f24c2884d3c27eac.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  text-rendering: optimizeLegibility; }
+
+@font-face {
+  font-family: 'HelsinkiGrotesk';
+  src: url("https://makasiini.hel.ninja/delivery/HelsinkiGrotesk/20d494430c87e15e194932b729d48270.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  text-rendering: optimizeLegibility; }
+
+@font-face {
+  font-family: 'HelsinkiGrotesk';
+  src: url("https://makasiini.hel.ninja/delivery/HelsinkiGrotesk/a50a1bd245ce63abcc0d1da80ff790d2.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  text-rendering: optimizeLegibility; }
+
+@font-face {
+  font-family: 'HelsinkiGrotesk';
+  src: url("https://makasiini.hel.ninja/delivery/HelsinkiGrotesk/62a1781d8b396fbb025b0552cf6304d2.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  text-rendering: optimizeLegibility; }
+
+        body {
+          font-size: 16px !important;
+          font-family: HelsinkiGrotesk, Helvetica, Arial, sans-serif !important;
+          /*background-image: url("https://www.hel.fi/wps/wcm/connect/*/e5e4c07c-f67d-4493-bc4b-a82acfe50973/htc.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-e5e4c07c-f67d-4493-bc4b-a82acfe50973-li4APq6");
+          background-color: #354560;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-position: center top;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        
+        }
+
+          .navbar-nav>li>a {
+              font-size: 200%;
+              color: #FFF !important;
+          }
+
+      .nav>li>a:hover, .nav>li>a:focus {
+        text-decoration: underline;
+        background-color: transparent;
+      }
+
+      .carousel-control .glyphicon.glyphicon-chevron-left,
+      .carousel-control .glyphicon.glyphicon-chevron-right {
+        color: #000;
+      }
+
+      .glyphicon.glyphicon-home {
+        color: #000
+      }
+
+      .well {
+        background-color: #DEDFE1
+      }
+
+        div.rich-text {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .content p {
+          font-size: 120%;
+        }
+
+        button .icon-bar {
+          background-color: #FFF !important;
+        }  
+        
+        footer {
+          background-color: #f3d078;
+/*          -webkit-mask-image: url({% static "img/footerUp.svg" %});
+          mask-image: url({% static "img/footerUp.svg" %});
+          -webkit-mask-repeat: repeat-x;
+          mask-repeat: repeat-x;
+*/          width: 100%;        
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin-top: 25px
+        }
+
+        footer .koro {
+          background-color: #f3d078;
+          -webkit-mask-image: url({% static "img/footerUp.svg" %});
+          mask-image: url({% static "img/footerUp.svg" %});
+          -webkit-mask-repeat: repeat-x;
+          mask-repeat: repeat-x;
+          width: 100%;  
+          height: 50px;
+          position: relative;
+          top: -50px; 
+        }
+        .footcol {
+            float: left;
+            padding: 0 40px;
+            color: #FFF;
+            /*background-color: #FF0606;*/
+        }
+
+        .footcol a {
+          color: #BD2719 !important;
+        }
+
+        .rich-text img {
+          width: 100% !important;
+          height: auto !important;
+        }
+
+        #mainNav {
+        background-color: #0072c6;
+        -webkit-mask-image: url({% static "img/tausta.svg" %});
+        mask-image: url({% static "img/tausta.svg" %});
+          /*background-image: url('{% static "img/tausta.svg" %}');
+          background-repeat: repeat-x;
+*/
+          -webkit-mask-repeat: repeat-x;
+          mask-repeat: repeat-x;
+          top: 0px;
+          left: 0;
+          }
+
+        .koro svg {
+          /*transform: rotate(180deg);*/
+          position: absolute;
+          left: 0;
+          }
+
+          .logo_hel {
+            width: 115px;
+          }
+
+          .navbar {
+            margin-bottom: 50px;
+          }
+
+          .navbar .nav {
+            margin-top: 1%;
+          }
+
+          .posts p {
+            max-width: 215px;
+          }
+
+          .template-subpage h1, .posts h3 {
+            color: #0072c6;
+          }
+
+
+        </style>
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-101157490-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    </head>
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %}
+    <nav id="mainNav" class="navbar">
+        <div class="container-fluid">
+                <div class="koro">
+</div> 
+
+      <div class="logoheader">
+{#         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 431.463 57.154" preserveAspectRatio="xMidYMin slice"><path fill="#FFC61E" d="M431.463 57.154V9.04L422.473 0l-8.993 9.04L404.49 0l-8.99 9.04L386.51 0l-8.992 9.04L368.526 0l-8.99 9.04L350.543 0l-8.99 9.04L332.562 0l-8.965 9.04L314.632 0l-8.992 9.04L296.65 0l-8.992 9.04-8.99-9.04-8.99 9.04-8.99-9.04-8.994 9.04-8.99-9.04-8.99 9.04L224.72 0l-8.99 9.04L206.74 0l-8.99 9.04L188.76 0l-8.992 9.04-8.99-9.04-8.992 9.04-8.99-9.04-8.992 9.04-8.99-9.04-8.992 9.04-8.99-9.04-8.967 9.04L98.9 0l-8.99 9.04L80.916 0l-8.99 9.04L62.937 0l-8.992 9.04L44.955 0l-8.992 9.04L26.973 0 17.98 9.04 8.99 0 0 9.04v48.114h215.73"></path></svg> #}
+        </div>
+    {% get_site_root as site_root %}
+    {% get_lang_root page=self as lang_root %}
+    {% top_menu parent=lang_root calling_page=lang_root %}    
+   </div>
+<div style="float: right;
+    right: 75px;
+    top: -100px;
+    position: relative;">
+   {% if page.fi_page and page.get_language != 'fi' %}
+    <a href="{{ page.fi_page.url }}" style="font-size: 200%;color:#fff !important">Suomi</a>
+   {% endif %}
+   {% if page.se_page and page.get_language != 'se' %}
+    <a href="{{ page.se_page.url }}" style="font-size: 200%;color:#fff !important">Svenska</a>
+   {% endif %}
+</div>
+
+</nav>
+<!-- Carousel
+================================================== -->
+    {# {% include "includes/carousel.html" with carousel_items=self.carousel_items.all %} #}
+
+
+<!-- /.carousel -->
+
+
+<div class="container content">
+  <!-- Three columns of text below the carousel -->
+  <div class="row" style="padding-bottom: 25px;">
+        {% block content %}{% endblock %}
+
+  {% block sidebar %} {% endblock %}
+  </div>
+  <!-- /.row -->
+  <!-- FOOTER -->
+  <!--<div class="koro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 304.834 3965.094 524.482" preserveAspectRatio="xMidYMin slice">
+  <path fill="#FFC61E" d="M.008 829.316h3965.086V357.69h-4.193c-41.247 0-41.247-52.856-82.496-52.856-41.257 0-41.257 52.856-82.515 52.856-41.24 0-41.24-52.856-82.498-52.856s-41.258 52.856-82.497 52.856c-41.258 0-41.258-52.856-82.516-52.856-41.24 0-41.24 52.856-82.497 52.856-41.248 0-41.248-52.856-82.496-52.856-41.258 0-41.258 52.856-82.497 52.856s-41.286-52.856-82.544-52.856c-41.257 0-41.257 52.856-82.496 52.856-41.258 0-41.258-52.856-82.516-52.856-41.248 0-41.248 52.856-82.47 52.856s-41.21-52.856-82.478-52.856c-41.24 0-41.24 52.856-82.497 52.856-41.258 0-41.25-52.856-82.498-52.856s-41.258 52.856-82.496 52.856c-41.24 0-41.268-52.856-82.525-52.856-41.247 0-41.247 52.856-82.495 52.856-41.258 0-41.258-52.856-82.496-52.856-41.24 0-41.26 52.856-82.517 52.856s-41.248-52.856-82.488-52.856c-41.266 0-41.266 52.856-82.515 52.856-41.258 0-41.258-52.856-82.497-52.856-41.267 0-41.267 52.856-82.524 52.856h-4.176c-41.248 0-41.248-52.856-82.497-52.856-41.258 0-41.258 52.856-82.497 52.856-41.267 0-41.267-52.856-82.516-52.856-41.257 0-41.257 52.856-82.496 52.856s-41.294-52.856-82.533-52.856c-41.258 0-41.258 52.856-82.497 52.856-41.267 0-41.267-52.856-82.515-52.856-41.25 0-41.25 52.856-82.497 52.856-41.258 0-41.258-52.856-82.516-52.856-41.248 0-41.248 52.856-82.497 52.856-41.257 0-41.257-52.856-82.496-52.856-41.268 0-41.268 52.856-82.497 52.856-41.202 0-41.202-52.856-82.46-52.856-41.248 0-41.248 52.856-82.497 52.856-41.248 0-41.257-52.856-82.515-52.856-41.248 0-41.248 52.856-82.497 52.856-41.275 0-41.275-52.856-82.505-52.856-41.267 0-41.267 52.856-82.515 52.856-41.25 0-41.25-52.856-82.488-52.856s-41.267 52.856-82.497 52.856c-41.276 0-41.276-52.856-82.524-52.856-41.256 0-41.256 52.856-82.496 52.856s-41.267-52.856-82.524-52.856c-40.07 0-41.21 49.897-79.09 52.726v.13h.007v471.626z"></path>
+  </svg></div> -->
+
+  <footer>
+<div class="koro">&nbsp;</div>
+  <div class="footcol col-sm-2" >
+  <img src="{% static 'img/hkilogo.svg' %}" style="width:115px;padding-top:15px" />
+  </div>
+  <div class="footcol col-sm-6">
+       {% if page.get_language == 'se' %}
+
+  <table>
+  <tr><td>
+    <h4>Staden ger råd</h4>             
+</td><td></td></tr>
+<tr><td>
+Allmän rådgivning</td><td>     09 310 111 11</td></tr>       
+ <tr><td>
+Rådgivning om<br>
+elektroniska tjänster</td><td>          09 310 888 00</td></tr>   
+<tr><td> 
+Seniorinfo</td><td>      09 310 445 56</td></tr>
+<tr><td>
+<br>
+<h4>Genvägar</h4> 
+<a href="https://digi.hel.fi" >
+Digitala Helsingfors</a><br/>
+<a href="http://www.hel.fi/www/helsinki/fi/kaupunki-ja-hallinto/hallinto/viestinta/viestinta-ja-neuvonta ">Rådgivning om stadens tjänster</a><br/>
+<a href="http://www.hel.fi/www/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/anna-palautetta ">Respons till Helsingfors stad</a><br/>
+</td></tr>
+</table>
+   {% else %}
+  <table>
+  <tr><td>
+    <h4>Kaupunki neuvoo</h4>             
+</td><td></td></tr>
+<tr><td>
+Yleisneuvonta</td><td>     09 310 111 11</td></tr>       
+ <tr><td>
+Sähköisen asioinnin<br>
+neuvonta</td><td>          09 310 888 00</td></tr>   
+<tr><td> 
+Seniori-info</td><td>      09 310 445 56</td></tr>
+<tr><td>
+<br>
+<h4>Oikopolkuja</h4> 
+<a href="https://digi.hel.fi" >Digitaalinen Helsinki</a><br/>
+<a href="http://www.hel.fi/www/helsinki/fi/kaupunki-ja-hallinto/hallinto/viestinta/viestinta-ja-neuvonta ">Neuvontaa kaupungin palveluista</a><br/>
+<a href="http://www.hel.fi/www/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/anna-palautetta ">Palautetta Helsingin kaupungille</a><br/>
+</td></tr>
+</table>
+   {% endif %}
+  </div>
+  <div class="footcol col-sm-4">
+  <h4> </h4>
+    <a href="https://twitter.com/HelDigineuvonta"><img class="svg" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-twitter.svg" style="width:30px"/> @HelDigineuvonta</a><br>
+    <a href="https://www.instagram.com/helsinkidigineuvonta/"><img class="svg" src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-instagram.svg" style="width:30px" /> helsinkidigineuvonta</a>
+  </div>
+    <p class="pull-right"><a href="#"> ^ </a></p>
+  </footer>
+
+</div><!-- /.container -->
+    <!-- script references -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="{% static 'assets/js/bootstrap.js' %}"></script>
+    </body>
+
+</html>

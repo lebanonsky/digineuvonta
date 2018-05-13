@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load navigation_tags wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-subpage{% endblock %}
+
+{% block extra_css %}
+{% image page.image width-2000 as img%}
+<style>
+.jumbobg {
+	background-image: url({{img.url}});
+	background-size: cover;
+    background-repeat: no-repeat;
+/*    padding: 75px 0 50px 135px;
+    margin: -50px -100px 0 -100px;*/
+/*background-image:
+  linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,1)),
+  url('{{img.url}}');*/
+    width: 105vw;
+    margin-left: -15vw;
+    margin-top: -80px;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="jumbobg container">
+<div class="jumbotron col-md-6 col-sx-12 col-md-offset-3" style="margin-left:100px;background-color: rgba(255,255,255,0.6);">
+	<h1>{{ page.title }}</h1>
+	{{ page.intro|safe }}</div>
+</div>
+<div class="col-sm-8" style="margin-top: 25px;background-color:#fff">
+	{{ page.body|richtext }}
+</div>
+<div class="col-sm-4" style="margin-top: 25px;padding: 15px;background-color: rgba(0,0,0,0.1);">
+	{{ page.sidebar|safe }}
+</div>
+{% endblock %}

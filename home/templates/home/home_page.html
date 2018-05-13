@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load navigation_tags wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+{% for post in page.get_children %}
+<div class="col-sx-12 col-sm-6 col-md-4 posts" style="padding-bottom: 15px;min-height: 425px;display:table-cell;
+">
+	{% image post.specific.image max-275x275 as img %}	
+    <img src="{{ img.url }}" width="{{ img.width }}"
+        height="{{ img.height }}" alt="{{ img.alt }}" class="" />
+
+	<h3>{{ post.title }}</h3>
+	<h5>{{ post.specific.intro|safe|truncatechars_html:150 }}</h5>
+	<a href="{% pageurl post %}" class="btn btn-default" role="button">Lue</a>
+	
+</div>
+{% endfor %}
+
+{# {% sub_pages parent=lang_root calling_page=lang_root %}     #}
+{% endblock %}
